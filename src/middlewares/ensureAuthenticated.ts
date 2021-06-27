@@ -18,7 +18,7 @@ export function ensureAuthenticated(
   const [, token] = tokenFromHeader.split(' ')
 
   try {
-    const { sub } = verify(token, "b996e7eaf8a2b199279360a76b18ab92c4191d84b37e1243c90cd1d7bb966567")
+    const { sub } = verify(token, process.env.TOKEN_SECRET)
     request.user_id = sub as string
 
     return next()
