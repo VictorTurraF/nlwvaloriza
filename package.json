@@ -17,7 +17,8 @@
   "scripts": {
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "dev": "ts-node-dev src/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "build": "yarn tsc"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
