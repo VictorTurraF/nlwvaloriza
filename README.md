@@ -1,3 +1,4 @@
+https://github.com/VictorTurraF/nlwvaloriza/actions/workflows/node.js.yml/badge.svg
 # NLW Valoriza
 Projeto desenvolvido durante a 6ª edição do NLW da Rocketseat o NLW/Together seguindo a trilha de NodeJS.
 
