@@ -3,6 +3,11 @@ node_modules
 yarn-error.log
 
 .env
+.env.test
 .env.dev
 .env.staging
-.env.prodution
+.env.production
+.env.save
+
+dist
+build
