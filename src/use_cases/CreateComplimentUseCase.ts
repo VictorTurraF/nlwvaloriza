@@ -1,6 +1,6 @@
-import { getCustomRepository } from "typeorm";
-import { ComplimentRepository } from "../repositories/ComplimentRepository";
-import { UserRepository } from "../repositories/UserRepository";
+import { getCustomRepository } from 'typeorm'
+import { ComplimentRepository } from '../repositories/ComplimentRepository'
+import { UserRepository } from '../repositories/UserRepository'
 
 interface ComplimentDTO {
   tag_id: string,
@@ -13,7 +13,7 @@ export class CreateComplimentUseCase {
   private complimentRepository: ComplimentRepository;
   private userRepository: UserRepository;
 
-  public constructor() {
+  public constructor () {
     this.complimentRepository = getCustomRepository(ComplimentRepository)
     this.userRepository = getCustomRepository(UserRepository)
   }

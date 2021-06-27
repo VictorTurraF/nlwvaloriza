@@ -1,8 +1,7 @@
-import { RequestHandler } from "express";
-import { AuthenticateUserUseCase } from "../use_cases/AuthenticateUserUseCase";
+import { RequestHandler } from 'express'
+import { AuthenticateUserUseCase } from '../use_cases/AuthenticateUserUseCase'
 
 export class AuthenticationController {
-
   handle: RequestHandler = async (request, response) => {
     const { email, password } = request.body
 
@@ -12,7 +11,6 @@ export class AuthenticationController {
 
     return response.json({ token })
   }
-
 }
 
 export const authenticationController = new AuthenticationController()

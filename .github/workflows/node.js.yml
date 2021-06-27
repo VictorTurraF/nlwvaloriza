@@ -5,9 +5,7 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ 'feature/*', 'hotfix/*' ]
+    branches: [ main, 'feature/*', 'hotfix/*' ]
 
 jobs:
   build:
@@ -29,6 +27,9 @@ jobs:
     - name: Install dependencies
       run: yarn --frozen-lockfile
     
+    - name: Run code linter
+      run: yarn lint:fix
+
     - name: Run build
       run: yarn build
     

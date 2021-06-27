@@ -1,11 +1,10 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
-import { v4 as uuid } from "uuid";
-import { Tag } from "./Tag";
-import { User } from "./User";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
+import { v4 as uuid } from 'uuid'
+import { Tag } from './Tag'
+import { User } from './User'
 
-@Entity("compliments")
+@Entity('compliments')
 export class Compliment {
-
   @PrimaryColumn()
   readonly id: string
 
@@ -15,7 +14,7 @@ export class Compliment {
   @Column()
   user_sender: string
 
-  @JoinColumn({ name: 'user_sender'})
+  @JoinColumn({ name: 'user_sender' })
   @ManyToOne(() => User)
   userSender: User
 
@@ -25,7 +24,7 @@ export class Compliment {
   @Column()
   user_receiver: string
 
-  @JoinColumn({ name: 'user_receiver'})
+  @JoinColumn({ name: 'user_receiver' })
   @ManyToOne(() => User)
   userReceiver: User
 
@@ -45,10 +44,9 @@ export class Compliment {
   @CreateDateColumn()
   created_at: Date
 
-  public constructor() {
+  public constructor () {
     if (!this.id) {
       this.id = uuid()
     }
   }
-
 }
