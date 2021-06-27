@@ -1,5 +1,5 @@
-import { RequestHandler } from "express";
-import { ListUserSentComplimentsUseCase } from "../use_cases/ListUserSentComplimentsUseCase";
+import { RequestHandler } from 'express'
+import { ListUserSentComplimentsUseCase } from '../use_cases/ListUserSentComplimentsUseCase'
 
 export class UserSentComplimentController {
   index: RequestHandler = async (request, response) => {

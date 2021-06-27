@@ -1,9 +1,8 @@
-import { RequestHandler } from "express"
-import { CreateTagUseCase } from "../use_cases/CrateTagUseCase"
-import { ListTagsUseCase } from "../use_cases/ListTagsUseCase"
+import { RequestHandler } from 'express'
+import { CreateTagUseCase } from '../use_cases/CrateTagUseCase'
+import { ListTagsUseCase } from '../use_cases/ListTagsUseCase'
 
 class TagController {
-
   index: RequestHandler = async (request, response) => {
     const useCase = new ListTagsUseCase()
 
@@ -21,7 +20,6 @@ class TagController {
 
     return response.json(tag)
   }
-
 }
 
 export const tagController = new TagController()

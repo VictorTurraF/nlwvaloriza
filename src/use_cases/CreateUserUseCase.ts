@@ -1,5 +1,5 @@
-import { getCustomRepository } from "typeorm";
-import { UserRepository } from "../repositories/UserRepository";
+import { getCustomRepository } from 'typeorm'
+import { UserRepository } from '../repositories/UserRepository'
 import { hash } from 'bcryptjs'
 
 interface UserDTO {
@@ -10,11 +10,11 @@ interface UserDTO {
 }
 
 export class CreateUserUseCase {
-  async createUser({ name, email, password, admin = false } : UserDTO) {
+  async createUser ({ name, email, password, admin = false } : UserDTO) {
     const userRepository = getCustomRepository(UserRepository)
 
     if (!email) {
-      throw new Error("Incorrect email provided")
+      throw new Error('Incorrect email provided')
     }
 
     const passwordHash = await hash(password, 8)
@@ -24,7 +24,7 @@ export class CreateUserUseCase {
     })
 
     if (userAlReadyExists) {
-      throw new Error("User already exists")
+      throw new Error('User already exists')
     }
 
     const user = userRepository.create({

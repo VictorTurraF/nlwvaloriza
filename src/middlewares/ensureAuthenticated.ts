@@ -1,12 +1,11 @@
-import { NextFunction, Request, RequestHandler, Response } from "express";
+import { NextFunction, Request, Response } from 'express'
 import { verify } from 'jsonwebtoken'
 
-export function ensureAuthenticated(
-  request: Request, 
-  response: Response, 
+export function ensureAuthenticated (
+  request: Request,
+  response: Response,
   next: NextFunction
 ) {
-
   // Receber o token
   const tokenFromHeader = request.headers.authorization
 
@@ -22,10 +21,7 @@ export function ensureAuthenticated(
     request.user_id = sub as string
 
     return next()
-
   } catch (error) {
-
     return response.status(401).end()
   }
-
 }

@@ -7,7 +7,7 @@ class UserController {
     const useCase = new ListUsersUseCase()
 
     const users = await useCase.listAllUsers()
-    
+
     return response.json(users)
   }
 
@@ -20,7 +20,6 @@ class UserController {
 
     return response.status(201).send(user)
   }
-
 }
 
-export const userController = new UserController();
+export const userController = new UserController()
