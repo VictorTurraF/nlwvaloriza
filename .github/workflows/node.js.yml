@@ -28,7 +28,7 @@ jobs:
 
   build:
     needs: setup
-
+    
     - name: Run code linter
       run: yarn lint:fix
 
@@ -39,5 +39,6 @@ jobs:
       run: yarn test
 
   docs:
+    needs: setup
     - name: Generate and deploy API documentation
       run: yarn doc
