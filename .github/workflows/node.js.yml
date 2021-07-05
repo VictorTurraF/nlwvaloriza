@@ -28,6 +28,7 @@ jobs:
 
   build:
     needs: setup
+    runs-on: ubuntu-latest
     steps:
     - name: Run code linter
       run: yarn lint:fix
@@ -40,6 +41,7 @@ jobs:
 
   docs:
     needs: setup
+    runs-on: ubuntu-latest
     steps:
     - name: Generate and deploy API documentation
       run: yarn doc
