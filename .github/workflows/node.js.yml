@@ -8,8 +8,7 @@ on:
     branches: [ main, 'feature/*', 'hotfix/*' ]
 
 jobs:
-  build:
-
+  setup:
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,7 +25,10 @@ jobs:
         
     - name: Install dependencies
       run: yarn --frozen-lockfile
-    
+
+  build:
+    needs: setup
+
     - name: Run code linter
       run: yarn lint:fix
 
@@ -35,3 +37,7 @@ jobs:
     
     - name: Run tests
       run: yarn test
+
+  docs:
+    - name: Generate and deploy API documentation
+      run: yarn doc
