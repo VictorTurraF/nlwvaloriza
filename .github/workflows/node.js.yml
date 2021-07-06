@@ -42,5 +42,13 @@ jobs:
     - uses: actions/setup-node@v2
     - name: Generate and publish api documentation
       run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        git remote set-url origin https://${github_token}@github.com/${repository}
         yarn --frozen-lockfile
         yarn doc
+      env:
+        user_name: 'VictorTurraF'
+        user_email: 'victor.florencio@univem.edu.br'
+        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        repository: ${{ github.repository }}
