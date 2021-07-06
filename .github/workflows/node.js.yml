@@ -51,7 +51,7 @@ jobs:
         git remote set-url origin https://${github_token}@github.com/${repository}
         yarn doc
       env:
-        user_name: 'VictorTurraF'
-        user_email: 'victor.florencio@univem.edu.br'
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
         github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
         repository: ${{ github.repository }}
