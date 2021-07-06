@@ -40,12 +40,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
+      run: yarn --frozen-lockfile
     - name: Generate and publish api documentation
       run: |
         git config --global user.name $user_name
         git config --global user.email $user_email
         git remote set-url origin https://${github_token}@github.com/${repository}
-        yarn --frozen-lockfile
         yarn doc
       env:
         user_name: 'VictorTurraF'
