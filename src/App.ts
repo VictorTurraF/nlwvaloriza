@@ -1,4 +1,5 @@
 import express, { Express, NextFunction, Request, Response } from 'express'
+import cors from 'cors';
 import { router } from './routes'
 
 export class App {
@@ -12,6 +13,7 @@ export class App {
   }
 
   private setUpMiddlewares () {
+    this.express.use(cors())
     this.express.use(express.json())
     this.express.use(this.handleExceptions)
   }
