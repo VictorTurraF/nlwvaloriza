@@ -40,7 +40,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
+
+    - name: Install dependencies
       run: yarn --frozen-lockfile
+      
     - name: Generate and publish api documentation
       run: |
         git config --global user.name $user_name
