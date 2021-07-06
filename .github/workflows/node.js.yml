@@ -8,7 +8,7 @@ on:
     branches: [ main, 'feature/*', 'hotfix/*' ]
 
 jobs:
-  setup:
+  integration:
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,11 +26,7 @@ jobs:
     - name: Install dependencies
       run: yarn --frozen-lockfile
 
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-    - name: Run code linter
+    - name: Run code checks
       run: yarn lint:fix
 
     - name: Run build
@@ -40,8 +36,11 @@ jobs:
       run: yarn test
 
   docs:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
-    - name: Generate and deploy API documentation
-      run: yarn doc
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - name: Generate and publish api documentation
+      run: |
+        yarn --frozen-lockfile
+        yarn doc
