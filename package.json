@@ -26,8 +26,8 @@
   },
   "scripts": {
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "dev": "ts-node-dev src/server.ts",
-    "test": "jest",
+    "dev": "NODE_ENV=development ts-node-dev src/server.ts",
+    "test": "NODE_ENV=test jest",
     "build": "yarn tsc",
     "lint:check": "yarn eslint src/**/*.ts",
     "lint:fix": "yarn lint:check --fix",
