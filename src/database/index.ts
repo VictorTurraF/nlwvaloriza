@@ -1,3 +1,3 @@
-import { createConnection } from 'typeorm'
+import { Database } from './Database'
 
-createConnection(process.env.NODE_ENV || 'development')
+Database.setUpConnection()
