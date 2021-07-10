@@ -16,12 +16,8 @@
     "logging": false,
     "synchronize": true,
     "type": "sqlite",
-    "database": "src/database/database.sqlite",
+    "database": "src/database/testdatabase.sqlite",
     "migrations": ["src/database/migrations/*.ts"],
-    "entities": ["src/entities/*.ts"],
-    "cli": {
-      "migrationsDir": "src/database/migrations",
-      "entitiesDir": "src/entities"
-    }
+    "entities": ["src/entities/*.ts"]
   }
 ]
