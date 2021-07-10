@@ -1,11 +1,11 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { v4 as uuid } from 'uuid'
 import { Tag } from './Tag'
 import { User } from './User'
 
 @Entity('compliments')
 export class Compliment {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   readonly id: string
 
   /**
