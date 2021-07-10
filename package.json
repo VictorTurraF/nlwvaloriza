@@ -32,7 +32,9 @@
   "scripts": {
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "dev": "NODE_ENV=development ts-node-dev src/server.ts",
+    "pretest": "yarn typeorm -c test schema:drop ; yarn typeorm -c test migration:run ; yarn typeorm -c test schema:sync",
     "test": "NODE_ENV=test jest",
+    "posttest": "yarn typeorm -c test migration:revert",
     "build": "yarn tsc",
     "lint:check": "yarn eslint src/**/*.ts",
     "lint:fix": "yarn lint:check --fix",
