@@ -1,3 +1,3 @@
-import { createConnection } from 'typeorm'
+import { Database } from './Database'
 
-createConnection()
+Database.setUpConnection()
