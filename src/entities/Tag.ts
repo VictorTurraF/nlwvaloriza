@@ -1,10 +1,10 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { v4 as uuid } from 'uuid'
 import { Expose } from 'class-transformer'
 
 @Entity('tags')
 export class Tag {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   readonly id: string
 
   @Column()
