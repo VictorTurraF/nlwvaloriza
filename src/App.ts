@@ -1,5 +1,5 @@
 import express, { Express, NextFunction, Request, Response } from 'express'
-import cors from 'cors';
+import cors from 'cors'
 import { router } from './routes'
 
 export class App {
