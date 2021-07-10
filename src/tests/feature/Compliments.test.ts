@@ -1,12 +1,7 @@
-import { Database } from '../../database/Database'
 import { app } from '../../App'
 import request from 'supertest'
 
 describe('Compliments Controller', () => {
-  beforeAll(async () => {
-    await Database.setUpConnection()
-  })
-
   it('should not be able to access if not authenticated', async () => {
     const response = await request(app)
       .post('/compliments')
