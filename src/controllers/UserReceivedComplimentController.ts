@@ -1,13 +1,26 @@
-import { RequestHandler } from 'express'
+import { Request, Response } from 'express'
 import { ListUserReceivedComplimentsUseCase } from '../use_cases/ListUserReceivedComplimentsUseCase'
 
 export class UserReceivedComplimentController {
-  index: RequestHandler = async (request, response) => {
+  private useCase: ListUserReceivedComplimentsUseCase
+
+  public constructor () {
+    // console.log('Instantiating errored controller')
+    this.useCase = new ListUserReceivedComplimentsUseCase()
+  }
+
+  private shouldIncludesSender (includesQuery: string) {
+    return includesQuery && includesQuery === 'sender'
+  }
+
+  index = async (request: Request, response: Response) => {
     const { user_id } = request
+    const { includes } = request.query
 
-    const useCase = new ListUserReceivedComplimentsUseCase()
-
-    const compliments = await useCase.listAllReceivedCompliments(user_id)
+    const compliments = await this.useCase.listAllReceivedCompliments({
+      userId: user_id,
+      shouldIncludesUserSender: this.shouldIncludesSender(includes as string)
+    })
 
     return response.json(compliments)
   }
