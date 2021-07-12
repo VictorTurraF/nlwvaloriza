@@ -1,4 +1,3 @@
-import { app } from '../../App'
 import request from 'supertest'
 import { make } from 'typeorm-factory-tools'
 import { User } from '../../entities/User'
@@ -7,9 +6,11 @@ import { Tag } from '../../entities/Tag'
 import '../../factories/UserFactory'
 import '../../factories/TagFactory'
 import { hash } from 'bcryptjs'
+import { App } from '../../App'
 
 describe('Compliments Controller', () => {
   const authUseCase = new AuthenticateUserUseCase()
+  const app = new App().express
 
   it('should not be able to access if not authenticated', async () => {
     const response = await request(app)
