@@ -1,11 +1,18 @@
 import 'reflect-metadata'
-import './database'
 import 'express-async-errors'
-import { app } from './App'
+import { App } from './App'
+import { Database } from './database/Database'
 
-app.listen(
-  process.env.APP_PORT || 3000,
-  function () {
-    console.log(`Server is running on port ${process.env.APP_PORT}!`)
-  }
-)
+Database
+  .setUpConnection()
+  .then(connection => {
+    return new App().express
+  })
+  .then(app => {
+    return app.listen(
+      process.env.APP_PORT || 3000,
+      function () {
+        console.log(`Server is running on port ${process.env.APP_PORT}!`)
+      }
+    )
+  })
