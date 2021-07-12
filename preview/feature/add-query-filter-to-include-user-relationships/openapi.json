@@ -134,6 +134,24 @@
       }
     },
     "/users/compliments/receive": {
+      "parameters": [
+        {
+          "name": "includes",
+          "in": "query",
+          "description": "Idicates which entiry relation should be displayed on response",
+          "required": false,
+          "schema": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "sender",
+                "receiver",
+                "tag"
+              ]
+            }
+          }
+        }
+      ],
       "get": {
         "tags": [
           "user"
