@@ -15,7 +15,7 @@ export class ComplimentController {
       message
     })
 
-    return response.json(compliment)
+    return response.status(201).json(compliment)
   }
 }
 

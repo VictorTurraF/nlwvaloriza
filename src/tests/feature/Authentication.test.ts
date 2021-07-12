@@ -1,11 +1,8 @@
 import request from 'supertest'
-import { app } from '../../App'
-import { Database } from '../../database/Database'
+import { App } from '../../App'
 
 describe('Authentication Controller', () => {
-  beforeAll(async () => {
-    await Database.setUpConnection()
-  })
+  const app = new App().express
 
   it('should creates an user', async () => {
     const requestBody = {

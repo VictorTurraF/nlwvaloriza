@@ -1,18 +1,24 @@
-import { getCustomRepository } from 'typeorm'
 import { Compliment } from '../entities/Compliment'
+import { ComplimentsQueryBuider } from '../query_builders/ComplimentsQueryBuilder'
 import { ComplimentRepository } from '../repositories/ComplimentRepository'
 
+interface Options {
+  userId: string,
+  shouldIncludesUserSender: boolean,
+}
+
 export class ListUserReceivedComplimentsUseCase {
-  async listAllReceivedCompliments (user_receiver: string): Promise<Compliment[]> {
-    const complimentRepository = getCustomRepository(ComplimentRepository)
+  async listAllReceivedCompliments ({ userId, shouldIncludesUserSender }: Options): Promise<Compliment[]> {
+    const queryBuilder = new ComplimentsQueryBuider(ComplimentRepository)
 
-    const compliements = await complimentRepository.find({
-      where: {
-        user_receiver
-      },
-      relations: ['userSender']
-    })
+    queryBuilder.whereUserIsTheReceiver(userId)
 
-    return compliements
+    if (shouldIncludesUserSender) {
+      queryBuilder.includeSenderRelationship()
+    }
+
+    const compliments = await queryBuilder.getQuery().getMany()
+
+    return compliments
   }
 }

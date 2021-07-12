@@ -1,6 +1,5 @@
 import express, { Express, NextFunction, Request, Response } from 'express'
 import cors from 'cors'
-import { router } from './routes'
 
 export class App {
   public express: Express;
@@ -19,6 +18,7 @@ export class App {
   }
 
   private setUpRoutes () {
+    const { router } = require('./routes')
     this.express.use(router)
   }
 
@@ -40,5 +40,3 @@ export class App {
     })
   }
 }
-
-export const app = new App().express
